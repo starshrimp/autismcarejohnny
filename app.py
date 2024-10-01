@@ -59,7 +59,7 @@ def generate_response(query_text):
 
     sources = [doc.metadata.get("source", None) for doc, _score in results]
     logging.info(f"User query: {query_text}")
-    logging.info(f"Response: {response}")
+    logging.info(f"Response: {response_text}")
     return response_text, sources, prompt
 
 # Streamlit App
