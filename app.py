@@ -75,6 +75,7 @@ if st.button("Send"):
         with st.spinner("Generating response..."):
             response, sources, prompt = generate_response(query_text)
             st.error(f"**Proof of Concept.**")
+            st.info(query_text)
             st.success(f"**AutiBot:** {response}")
             # Display sources if available
             if sources:
