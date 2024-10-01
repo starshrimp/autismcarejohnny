@@ -93,4 +93,4 @@ if st.button("Send"):
 
 # Footer
 st.markdown("---")
-st.markdown("Created with ❤️ by Adrian Altermatt & Sarah Meyer")
+st.markdown("Created by Adrian Altermatt & Sarah Meyer")
