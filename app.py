@@ -9,6 +9,7 @@ from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
 from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
+from datetime import datetime
 from dotenv import load_dotenv
 
 # Constants
@@ -60,6 +61,9 @@ def generate_response(query_text):
     sources = [doc.metadata.get("source", None) for doc, _score in results]
     os.write(1,f'User: {query_text}\n'.encode('utf-8'))   
     os.write(1,f'Response: {response_text}\n'.encode('utf-8'))   
+    current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    # Use os.write to output the date and time
+    os.write(1, f'Date and Time: {current_time}\n'.encode('utf-8'))
     return response_text, sources, prompt
 
 # Streamlit App
