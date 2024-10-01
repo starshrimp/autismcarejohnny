@@ -2,6 +2,7 @@ __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import os
+import logging
 import streamlit as st
 import openai 
 from langchain_community.vectorstores import Chroma
@@ -57,6 +58,8 @@ def generate_response(query_text):
     response_text = llm.predict(prompt)
 
     sources = [doc.metadata.get("source", None) for doc, _score in results]
+    logging.info(f"User query: {query_text}")
+    logging.info(f"Response: {response}")
     return response_text, sources, prompt
 
 # Streamlit App
