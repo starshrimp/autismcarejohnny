@@ -59,11 +59,15 @@ def generate_response(query_text):
     response_text = llm.predict(prompt)
 
     sources = [doc.metadata.get("source", None) for doc, _score in results]
-    os.write(1,f'User: {query_text}\n'.encode('utf-8'))   
-    os.write(1,f'Response: {response_text}\n'.encode('utf-8'))   
     current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    # Use os.write to output the date and time
-    os.write(1, f'Date and Time: {current_time}\n'.encode('utf-8'))
+    # ANSI escape code for red
+    RED = "\033[91m"
+    RESET = "\033[0m"
+    
+    # Writing colored text to the terminal console
+    # os.write(1, f"{RED}This is red text{RESET}\n".encode())
+    os.write(1,f'{RED}[{current_time}]{RESET} User: {query_text}\n'.encode('utf-8'))   
+    os.write(1,f'{RED}[{current_time}]{RESET} Response: {response_text}\n'.encode('utf-8'))   
     return response_text, sources, prompt
 
 # Streamlit App
