@@ -26,7 +26,7 @@ load_dotenv()
 #---- Set OpenAI API key 
 # Change environment variable name from "OPENAI_API_KEY" to the name given in 
 # your .env file.
-openai.api_key = os.environ['OPENAI_API_KEY']
+openai.api_key = st.secrets("OPENAI_API_KEY")
 # Function to generate response
 def generate_response(query_text):
     # Prepare the DB
