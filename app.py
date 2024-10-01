@@ -58,8 +58,7 @@ def generate_response(query_text):
     response_text = llm.predict(prompt)
 
     sources = [doc.metadata.get("source", None) for doc, _score in results]
-    print(f"User query: {query_text}")
-    print(f"Response: {response_text}")
+    os.write(1,b'Something was executed.\n')   
     return response_text, sources, prompt
 
 # Streamlit App
